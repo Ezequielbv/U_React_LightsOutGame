@@ -90,9 +90,16 @@ class Board extends Component {
   /** Render game board or winning message. */
 
   render() {
-      if(this.state.hasWon) {
-          return <h1>YOU WON!!</h1>
-      }
+    // if (this.state.hasWon) {
+    //   return (
+    //     <div className="Board-title">
+    //       <div className="winner">
+    //         <span className="neon-orange">YOU</span>
+    //         <span className="neon-blue">WIN!</span>
+    //       </div>
+    //     </div>
+    //   );
+    // }
     // if the game is won, just show a winning msg & render nothing else
 
     // TODO
@@ -116,9 +123,27 @@ class Board extends Component {
       tblBoard.push(<tr key={y}>{row}</tr>);
     }
     return (
-      <table className="Board">
-        <tbody>{tblBoard}</tbody>
-      </table>
+      <div>
+        {this.state.hasWon ? (
+          <div className="winner">
+            <span className="neon-orange">YOU</span>
+            <span className="neon-blue">WIN!</span>
+          </div>
+        ) : (
+          <div>
+            <div className="Board-title">
+              <div className="neon-orange">Lights</div>
+              <div className="neon-blue">out</div>
+            </div>
+            <table className="Board">
+            {tblBoard}
+            </table> 
+          </div>
+        )}
+        {/* <table className="Board">
+          <tbody>{tblBoard}</tbody>
+        </table> */}
+      </div>
     );
   }
 }
